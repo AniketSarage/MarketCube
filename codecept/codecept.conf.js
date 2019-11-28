@@ -1,29 +1,29 @@
 exports.config = {
-  output: './output',
+  output: "./output",
   helpers: {
     WebDriver: {
-      url: 'http://localhost',
-      browser: 'chrome',
-      windowSize       : "maximize",
+      url: "http://localhost",
+      browser: "chrome",
+      windowSize: "maximize",
       waitForNavigation: "networkidle0",
-      waitForTimeout   : 10000,
+      waitForTimeout: 10000,
     },
   },
   include: {
-    I: './customStep.js'
+    I: "./customStep.js",
   },
   mocha: {},
   bootstrap: null,
   teardown: null,
   hooks: [],
   gherkin: {
-    features: './feature/*.feature',
-    steps: ['./step/public/forgetPasswordStep.js']
+    features: "./feature/*.feature",
+    steps: ["./step/public/forgetPasswordStep.js"],
   },
   plugins: {
     screenshotOnFail: {
-      enabled: true
-    }
+      enabled: true,
+    },
   },
-  name: 'codecept'
-}
+  name: "codecept",
+};

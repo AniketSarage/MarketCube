@@ -9,7 +9,8 @@ const customActor = () => {
     this.pressKey("Delete");
   };
 
-  I.customPaste = async function customPaste() { // locator
+  I.customPaste = async function customPaste() {
+    // locator
     this.pressKey(["Control", "v"]);
   };
 
