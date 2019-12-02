@@ -1,4 +1,5 @@
 const env = require("../../helper/env");
+const helperBase = require('../../helper/base');
 const { forgetPasswordPage } = require("../../page/forgetPasswordPage");
 const { forgetPasswordLocator } = require("../../locator/forgetPasswordLocator");
 const { forgotPasswordData } = require("../../data/public/forgotPasswordData");
@@ -48,6 +49,7 @@ When("user enters the email to access email confirmation mail from the inbox", (
 });
 
 Then("user should click on verify email", () => {
+  forgetPasswordPage.switchingToFrame(forgetPasswordLocator.iFrameInMailinator);
   forgetPasswordPage.clickAsPerLocator(forgetPasswordLocator.verifyEmailLocator);
 });
 
@@ -56,7 +58,8 @@ When("user is on forgotten password page", () => {
 });
 
 When("user enters registered email", () => {
-  forgetPasswordPage.fillTheField(forgetPasswordLocator.emailAddressToResetLocator);
+  helperBase.waitForElement(forgetPasswordLocator.emailAddressToResetLocator);
+  forgetPasswordPage.fillTheField(forgetPasswordLocator.emailAddressToResetLocator, forgotPasswordData.email);
 });
 
 When("user clicks on reset password", () => {
@@ -68,7 +71,10 @@ Then("mail should be sent successfully", () => {
 });
 
 When("user enters into reset password email", () => {
+  forgetPasswordPage.fillTheField(forgetPasswordLocator.mailinatorEmailBox, forgotPasswordData.randomUser);
+  forgetPasswordPage.clickAsPerLocator(forgetPasswordLocator.buttonToFinalizeMail);
   forgetPasswordPage.clickAsPerLocator(forgetPasswordLocator.resetPasswordMailInbox);
+  forgetPasswordPage.switchingToFrameToResetPassword(forgetPasswordLocator.iFrameInMailinator);
   forgetPasswordPage.clickAsPerLocator(forgetPasswordLocator.resetPasswordLinkInMail);
 });
 

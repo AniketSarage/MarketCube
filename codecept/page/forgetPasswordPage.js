@@ -15,22 +15,17 @@ module.exports = {
     },
 
     clickAsPerLocator(locator) {
-      I.waitForElement(locator);
+      helperBase.waitForElement(locator);
       I.click(locator);
     },
 
     fillCredentialsForRegistration(credentials) {
       credentials.map(fillValues => {
-        I.waitForElement(fillValues.locator);
+        helperBase.waitForElement(fillValues.locator);
         I.fillField(fillValues.locator, fillValues.data);
       });
       this.clickAsPerLocator(forgetPasswordLocator.policyAndTerms);
       this.clickAsPerLocator(forgetPasswordLocator.registerLocator);
-    },
-
-    setRandomEmail(userName) {
-      I.fillField(forgetPasswordLocator.mailinatorEmailBox);
-      I.click(forgetPasswordLocator.buttonToFinalizeMail);
     },
 
     checkElementExistence(locator, element) {
@@ -39,6 +34,16 @@ module.exports = {
 
     fillTheField(locator, value) {
       I.fillField(locator, value);
+    },
+
+    switchingToFrame(iFrame) {
+      I.switchTo(iFrame);
+      helperBase.waitForElement(forgetPasswordLocator.verifyEmailLocator);
+    },
+
+    switchingToFrameToResetPassword(iFrame) {
+      I.switchTo(iFrame);
+      helperBase.waitForElement(forgetPasswordLocator.resetPasswordLinkInMail);
     },
   },
 };
