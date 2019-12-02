@@ -62,20 +62,21 @@ When("user enters registered email", () => {
   forgetPasswordPage.fillTheField(forgetPasswordLocator.emailAddressToResetLocator, forgotPasswordData.email);
 });
 
-When("user clicks on reset password", () => {
-  forgetPasswordPage.clickAsPerLocator(forgetPasswordLocator.resetPasswordButtonLocator);
-});
-
-Then("mail should be sent successfully", () => {
-
-});
-
 When("user enters into reset password email", () => {
   forgetPasswordPage.fillTheField(forgetPasswordLocator.mailinatorEmailBox, forgotPasswordData.randomUser);
   forgetPasswordPage.clickAsPerLocator(forgetPasswordLocator.buttonToFinalizeMail);
   forgetPasswordPage.clickAsPerLocator(forgetPasswordLocator.resetPasswordMailInbox);
   forgetPasswordPage.switchingToFrameToResetPassword(forgetPasswordLocator.iFrameInMailinator);
   forgetPasswordPage.clickAsPerLocator(forgetPasswordLocator.resetPasswordLinkInMail);
+});
+
+When("user clicks on reset password", () => {
+  forgetPasswordPage.clickAsPerLocator(forgetPasswordLocator.resetPasswordButtonLocator);
+  forgetPasswordPage.switchNext();
+});
+
+Then("mail should be sent successfully", () => {
+
 });
 
 When("user resets password", () => {

@@ -17,7 +17,7 @@ module.exports = {
     verifyEmailLocator: '//a[contains(.,"Verify Email")]',
     emailAddressToResetLocator: '//input[@id="email"]',
     resetPasswordButtonLocator: '//span[@class="Polaris-Button__Text"][contains(.,"Reset Password")]',
-    resetPasswordMailInbox: '//a[contains(.,Reset your MarketCube password")]',
+    resetPasswordMailInbox: '//a[contains(.,"Reset your MarketCube password")]',
     resetPasswordLinkInMail:'(//a[contains(@target,"other")])[2]',
     newPasswordLocator: '#newPassword',
     confirmNewPasswordLocator: '#confirmNewPassword',

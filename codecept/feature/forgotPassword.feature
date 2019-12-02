@@ -19,7 +19,6 @@ Scenario: To register the user for using forgotten password feature
   When user clicks on reset password
   Then mail should be sent successfully
   When user is on mailinator web page
-  When user enters the email to access email confirmation mail from the inbox
   When user enters into reset password email
   When user resets password
   Then password reset done message should be displayed
